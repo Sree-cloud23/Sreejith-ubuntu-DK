@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+#ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y apache2
+#COPY index.html /var/www/html/
+#COPY ./dockerize.sh /
+#RUN chmod +x /dockerize.sh
+EXPOSE 80
+
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
+
+
+#ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND","./dockerize.sh"]
+

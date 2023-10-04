@@ -1,0 +1,16 @@
+# Use the official Ubuntu as a parent image
+FROM ubuntu:latest
+
+# Set non-interactive mode during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update the package repository and install Apache2
+RUN apt-get update && apt-get install -y apache2
+
+# Expose port 80 (HTTP)
+EXPOSE 80
+
+# Start Apache2 in the foreground when the container starts
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+#CMD [ ". dockerize.sh" ]
